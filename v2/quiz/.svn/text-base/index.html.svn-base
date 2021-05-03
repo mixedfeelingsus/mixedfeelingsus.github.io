@@ -1,0 +1,24 @@
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+
+// Set cookie based on response and advance to next URL
+function setCookie () {
+	var cookie_string = "name=mixedfeelings1; value="+escape(document.myform.answer1.value)+"; expires=";
+	var expDate = new Date();
+	expDate.setDate(expDate.getDate() + 30);
+	cookie_string += expDate.toUTCString()+"; path=../";
+	document.cookie = cookie_string;
+	window.location = "../viz/index.html"
+}
+
+</script>
+</head>
+<body>
+	<form name="myform" action="javascript: setCookie();">
+		<input type="text" name="answer1" />
+		<input type="submit" value"Submit" />
+	</form>
+</body>

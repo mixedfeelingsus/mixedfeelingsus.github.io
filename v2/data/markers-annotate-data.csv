@@ -1,0 +1,15 @@
+questions,neg_score,pos_score,amb_score
+Gay People,-45,181,0.19
+Nuclear Power Plants,-143,127,0.34
+US Borrowing Money,-135,108,0.41
+Berkeley Student Experience,-127,215,0.44
+Giving Money to Homeless,-151,92,0.25
+Diet and Exercise Habits,-142,146,0.46
+Relationship with Family,-85,225,0.33
+Black People,-98,195,0.35
+Facebook,-174,155,0.53
+Organ Donation,-61,205,0.25
+Democrats,-85,167,0.42
+Republicans,-155,68,0.33
+Romney,-115,57,0.3
+Obama,-88,170,0.38

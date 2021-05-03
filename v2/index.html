@@ -1,0 +1,72 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <title>What Do Mixed Feelings Look Like?</title>
+  <meta name="description" content="" />
+
+  <!-- Mobile viewport optimized: h5bp.com/viewport -->
+  <meta name="viewport" content="width=device-width" />
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+  <link rel="stylesheet" href="css/960_12_col.css" />
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except this Modernizr build.
+       Modernizr enables HTML5 elements & feature detects for optimal performance.
+       Create your own custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/modernizr-2.5.3.min.js"></script>
+  
+</head>
+<body>
+		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+		chromium.org/developers/how-tos/chrome-frame-getting-started -->
+		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+		<div id="backgroundContainer">
+			<div id="intro" class="container_12">
+				<h1>What Do Mixed Feelings Look Like?</h1>
+				<div id="content">
+					<h2>Public opinion polls traditionally ask people whether they feel positive <img src="img/bluedot.png" alt="blue dot" width="20px" height="20px" /> or negative <img src="img/reddot.png" alt="red dot" width="20px" height="20px" /> about an issue—agree or disagree, approve or disapprove. Yet researchers have long acknowledged that people can have both positive and negative feelings about an issue. In other words, people can have mixed feelings. <img src="img/purpledot.png" alt="purple dot" width="20px" height="20px" /></h2>
+					<div id="more">
+						<p>A traditional scale would ask you to place your feelings on a scale from negative to positive <img src="img/pos_neg_scale.png" alt="Positive Negative Scale" width="140px" height="20px" /> , and if you were neutral you'd place yourself in the middle. But are you neutral because you're indifferent, or are you neutral because your feelings are mixed? There's no way express mixed feelings on a traditional scale.</p>
+						<p>A simple way to capture mixed feelings is to separate the scale into two pieces - <---------0 and  0---------> + , and ask people to place themselves on both.</p>
+						<p>So what happens when people can express mixed feelings? Take the quiz to see what it's like to answer questions like this, or if you're eager to see what mixed feelings look like, you can go straight to the data.</p>
+					</div>
+					<h4><a id="showmore" href="#">Show More</a></h4>
+				</div>
+				<div class="grid_8 push_2">
+					<a class="btn big grid_3 alpha" href="#">Take The Quiz</a>
+					<a class="btn big grid_3 push_2 omega" href="viz/index.html">See The Data</a>
+				</div>
+			</div>
+		</div>
+
+  <!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+  <script>
+  	jQuery(function( $ ){
+  		
+  		$("#showmore").on("click", function(event) {
+  			console.log("here")
+  			$("#showmore").text("Show Less");
+  			$("#more").slideToggle("slow");
+  		})
+  		
+  	});
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!doctype html> <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+
+		<title>Mixed Feelings Quiz</title>
+		<meta name="description" content="" />
+
+		<meta name="viewport" content="width=device-width" />
+
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css"/>
+		<link rel="stylesheet" href="../css/960_12_col.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<link rel="shortcut icon" href="favicon.ico" />
+
+		<script src="../js/modernizr-2.5.3.min.js"></script>
+
+	  <script type="text/javascript">
+		  function fadePageIn() {
+			  $("#backgroundContainer").fadeIn(500);
+		  }
+	  </script>
+
+	</head>
+
+	<body onload="javascript: fadePageIn();">
+
+		<div id="backgroundContainer" style="display: none">
+			<div id="intro" class="container_12">
+				<h1>Quiz</h1>
+				<div id="quiz">
+					<form action="javascript:recordValue();">
+						<div id="bigdiv0" class="q clearfix">
+							<h2>Overall, how do you feel about Facebook?</h2>
+							<div id="div0">
+								<p>Thinking only of the <span class="blue">positive</span> aspects of Facebook, I feel:</p>
+								<div id="slider0" class="slider"></div>
+								<ol class="label">
+									<li class="grid_2 alpha">Not At All Positive</li>
+									<li class="grid_2 center">Slightly Positive</li>
+									<li class="grid_2 center">Positive</li>
+									<li class="grid_2 omega right">Very Positive</li>
+								</ol>
+							</div>
+							<div id="div1" class="hidden">
+								<p>Thinking only of the <span class="red">negative</span> aspects of Facebook, I feel:</p>
+								<div id="slider1" class="slider"></div>
+								<ol class="label">
+									<li class="grid_2 alpha">Not At All Negative</li>
+									<li class="grid_2 center">Slightly Negative</li>
+									<li class="grid_2 center">Negative</li>
+									<li class="grid_2 omega right">Very Negative</li>
+								</ol>
+								
+							</div>
+						</div>
+			
+						<div id="bigdiv1" class="q clearfix hidden">
+							<h2>Overall, how do you feel about your diet and exercise habits?</h2>
+							<div id="div2">
+								<p>Thinking only of the <span class="blue">positive</span> aspects of my diet and exercise habits, I feel:</p>
+								<div id="slider2" class="slider"></div>
+								<ol class="label">
+									<li class="grid_2 alpha">Not At All Positive</li>
+									<li class="grid_2 center">Slightly Positive</li>
+									<li class="grid_2 center">Positive</li>
+									<li class="grid_2 omega right">Very Positive</li>
+								</ol>
+							</div>
+							<div id="div3" class="hidden">
+								<p>Thinking only of the <span class="red">negative</span> aspects of my diet and exercise habits, I feel:</p>
+								<div id="slider3" class="slider"></div>
+								<ol class="label">
+									<li class="grid_2 alpha">Not At All Negative</li>
+									<li class="grid_2 center">Slightly Negative</li>
+									<li class="grid_2 center">Negative</li>
+									<li class="grid_2 omega right">Very Negative</li>
+								</ol>
+							</div>
+						</div>
+			
+						<div id="bigdiv2" class="q clearfix hidden">
+							<h2>Overall, how do you feel about Mitt Romney?</h2>
+							<div id="div4">
+								<p>Thinking only of the <span class="blue">positive</span> aspects of Mitt Romney, I feel:</p>
+								<div id="slider4" class="slider"></div>
+								<ol class="label">
+									<li class="grid_2 alpha">Not At All Positive</li>
+									<li class="grid_2 center">Slightly Positive</li>
+									<li class="grid_2 center">Positive</li>
+									<li class="grid_2 omega right">Very Positive</li>
+								</ol>
+							</div>
+			
+							<div id="div5" class="hidden">
+								<p>Thinking only of the <span class="red">negative</span> aspects of Mitt Romney, I feel:</p>
+								<div id="slider5" class="slider"></div>
+								<ol class="label">
+									<li class="grid_2 alpha">Not At All Negative</li>
+									<li class="grid_2 center">Slightly Negative</li>
+									<li class="grid_2 center">Negative</li>
+									<li class="grid_2 omega right">Very Negative</li>
+								</ol>
+							</div>
+						</div>
+			
+						<div id="bigdiv3" class="q clearfix hidden">
+							<h2>Overall, how do you feel about donating your internal organs when you die?</h2>
+							<div id="div6">
+								<p>Thinking only of the <span class="blue">positive</span> aspects of donating my internal organs when I die, I feel:</p>
+								<div id="slider6" class="slider"></div>
+								<ol class="label">
+									<li class="grid_2 alpha">Not At All Positive</li>
+									<li class="grid_2 center">Slightly Positive</li>
+									<li class="grid_2 center">Positive</li>
+									<li class="grid_2 omega right">Very Positive</li>
+								</ol>
+							</div>
+			
+							<div id="div7" class="hidden">
+								<p>Thinking only of the <span class="red">negative</span> aspects of donating my internal organs when I die, I feel:</p>
+								<div id="slider7" class="slider"></div>
+								<ol class="label">
+									<li class="grid_2 alpha">Not At All Negative</li>
+									<li class="grid_2 center">Slightly Negative</li>
+									<li class="grid_2 center">Negative</li>
+									<li class="grid_2 omega right">Very Negative</li>
+								</ol>
+							</div>
+						</div>
+			
+						<div id="bigdiv4" class="q clearfix hidden">
+							<h2>Overall, how do you feel about giving money to a homeless person on the street, such as on Telegraph Avenue?</h2>
+							<div id="div8">
+								<p>Thinking only of the <span class="blue">positive</span> aspects of giving money to a homeless person on the street, such as on Telegraph Avenue, I feel:</p>
+								<div id="slider8" class="slider"></div>
+								<ol class="label">
+									<li class="grid_2 alpha">Not At All Positive</li>
+									<li class="grid_2 center">Slightly Positive</li>
+									<li class="grid_2 center">Positive</li>
+									<li class="grid_2 omega right">Very Positive</li>
+								</ol>
+							</div>
+			
+							<div id="div9" class="hidden">
+								<p>Thinking only of the <span class="red">negative</span> aspects of giving money to a homeless person on the street, such as on Telegraph Avenue, I feel:</p>
+								<div id="slider9" class="slider"></div>
+								<ol class="label">
+									<li class="grid_2 alpha">Not At All Negative</li>
+									<li class="grid_2 center">Slightly Negative</li>
+									<li class="grid_2 center">Negative</li>
+									<li class="grid_2 omega right">Very Negative</li>
+								</ol>
+							</div>
+						</div>
+						<!--<div class="grid_1 alpha"><button class="btn">Back</button></div>-->
+						<button id="button" class="btn grid_1" type="submit">Next</button>
+					</form>
+				</div>
+				<footer>
+					<ol>
+						<li><a class="nostyle" href="../index.html">Home</a></li>
+						<li><a class="nostyle" href="../quiz/index.html">Restart The Quiz</a></li>
+						<li><a class="nostyle" href="../technicalnotes.pdf">Technical Notes</a></li>
+						<li><a class="nostyle" href="mailto:contact@mixedfeelings.us">Contact</a></li>
+					</ol>
+				</footer>
+			</div>
+			
+		</div>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+		
+		<script type="text/javascript">
+			//generate the sliders
+			$(document).ready(function() {
+				for(var k = 0; k < 10; k++) {
+					$("#slider" + k).slider();
+					$("#slider" + k).slider("option", "min", 0);
+					$("#slider" + k).slider("option", "max", 300);
+				}
+			});
+
+			//record values and show/hide questions as we go
+			var cookieValues = new Array(10);
+			var i = 0;
+			var j = 0;
+			
+			function recordValue() {
+				var value = $("#slider" + i).slider("option", "value");
+				cookieValues[i] = value;
+
+				if(i == cookieValues.length - 1) {
+					setCookie();
+					return;
+				}
+
+				if(i % 2 == 0) {
+					$("#div" + i).fadeOut(500);
+					$("#div" + (i + 1)).delay(500).fadeIn(500);
+					i++;
+				} else {
+					$("#bigdiv" + j).fadeOut(500);
+					$("#bigdiv" + (j + 1)).delay(502).fadeIn(500);
+					i++;
+					j++;
+				}
+			}
+
+			//set cookie based on responses and advance to visualization
+			function setCookie() {
+				var cookieString = "mixedFeelingsCookie=" + cookieValues.toString() + "; expires=";
+				var expDate = new Date();
+				expDate.setDate(expDate.getDate() + 30);
+				cookieString += expDate.toUTCString() + "; path=/";
+				document.cookie = cookieString;
+				window.location = "../viz/index.html";
+			}
+
+			//cookie info: http://www.quirksmode.org/js/cookies.html
+			//js forms info: http://www.quirksmode.org/js/forms.html
+
+		</script>
+
+	</body>
+</html>

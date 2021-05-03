@@ -1,0 +1,164 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <title>Mixed Feelings</title>
+  <meta name="description" content="" />
+
+  <!-- Mobile viewport optimized: h5bp.com/viewport -->
+  <meta name="viewport" content="width=device-width" />
+
+  <link rel="stylesheet" href="../css/960_12_col.css" />
+  <link rel="stylesheet" href="../css/common.css" />
+  <link rel="stylesheet" href="../css/vizstyle.css" />
+
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- All JavaScript at the bottom, except this Modernizr build.
+       Modernizr enables HTML5 elements & feature detects for optimal performance.
+       Create your own custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="../js/modernizr-2.5.3.min.js"></script>
+
+  <script type="text/javascript">
+	  function fadePageIn() {
+		  $("#container").fadeIn(500);
+	  }
+  </script>
+  
+</head>
+<body onload="javascript: fadePageIn();">
+		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+		chromium.org/developers/how-tos/chrome-frame-getting-started -->
+		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+		<div id="container" class="container_12" style="display: none">
+			<h1><a class="nostyle" href="../">Mixed Feelings</a></h1>
+			<div id="vizContainer" class="clearfix">
+				<div class="grid_12">
+					<div id="viz" class="grid_8 alpha"></div>
+					<div id="content" class="grid_4 omega">
+						<h2 id="question">Overall, how do you feel about Facebook?</h2>
+						<p id="description">Berkeley undergraduates felt the most mixed about Facebook. On average, they felt about equal levels of positive and negative feelings, and overall it was the second most emotionally intense issue, behind their feelings about the Berkeley student experience.</p>
+						<p id="overall">Overall: Very mixed feelings</p>
+						<nav class="clearfix">
+							<div class="grid_2 alpha" id="left">
+								<p><a href="#">&#9664; Barack Obama</a></p>
+							</div>
+							<div class="grid_2 omega" id="right">
+								<p><a href="#">Diet/Exercise &#9654;</a></p>
+							</div>
+						</nav>
+					</div>
+				</div>
+				<div id="controls">
+					<div id="toggle" class="btn-group" data-toggle="buttons-radio">
+						<button id="collapse" class="btn" onclick="collapse();"><img src="../img/collapse.png" alt="expand" width="12px" height="12px" /></button>
+	  					<button id="expand" class="btn" onclick="expand();"><img src="../img/expand.png" alt="expand" width="21px" height="12px" /></button>
+					</div>
+					<ol id="legend">
+						<li>Key:</li>
+						<li><img src="../img/reddot.png" alt="blue dot" width="12px" height="12px" />Negative</li>
+						<li><img src="../img/purpledot.png" alt="blue dot" width="12px" height="12px" />Neutral</li>
+						<li><img src="../img/bluedot.png" alt="blue dot" width="12px" height="12px" />Positive</li>
+						<li id="youdot" class="hidden"><img src="../img/youdot.png" alt="blue dot" width="10px" height="10px" />You</li>
+					</ol>
+				</div>
+				
+				
+				<div id="sliderContainer">
+					<div id="slider">
+						<figure id="q8" class="unselected">
+							<img src="../img/thumbnails/01_fb.png" alt="Small Graph" width="60px" height="40px" />
+							<figcaption>Facebook</figcaption>
+						</figure>
+						<figure id="q5"class="unselected">
+							<img src="../img/thumbnails/02_diet.png" alt="Small Graph" width="60px" height="40px" />
+							<figcaption>Diet / Exercise</figcaption>
+						</figure>
+						<figure id="q12" class="unselected">
+							<img src="../img/thumbnails/03_mitt.png" alt="Small Graph" width="60px" height="40px" />
+							<figcaption>Mitt Romney</figcaption>
+						</figure>
+						<figure id="q9" class="unselected">
+							<img src="../img/thumbnails/04_organ.png" alt="Small Graph" width="60px" height="40px" />
+							<figcaption>Organ Donation</figcaption>
+						</figure>
+						<figure id="q4"class="unselected">
+							<img src="../img/thumbnails/05_homeless.png" alt="Small Graph" width="60px" height="40px" />
+							<figcaption>Homeless</figcaption>
+						</figure>
+						
+						<figure id="q0" class="unselected">
+							<img src="../img/thumbnails/06_gay.png" alt="Small Graph" width="60px" height="40px" />
+							<figcaption>Gay People</figcaption>
+						</figure>
+						<figure id="q1" class="unselected">
+							<img src="../img/thumbnails/07_nuclear.png" alt="Small Graph" width="60px" height="40px" />
+							<figcaption>Nuclear Power</figcaption>
+						</figure>
+						<figure id="q2" class="unselected">
+							<img src="../img/thumbnails/08_debt.png" alt="Small Graph" width="60px" height="40px" />
+							<figcaption>U.S. Debt</figcaption>
+						</figure>
+						<figure id="q3" class="unselected">
+							<img src="../img/thumbnails/09_uc_berkeley.png" alt="Small Graph" width="60px" height="40px" />
+							<figcaption>UC Berkeley</figcaption>
+						</figure>
+						
+						<figure id="q6"class="unselected">
+							<img src="../img/thumbnails/10_family.png" alt="Small Graph" width="60px" height="40px" />
+							<figcaption>Family</figcaption>
+						</figure>
+						<figure id="q7" class="unselected">
+							<img src="../img/thumbnails/11_african_americans.png" alt="Small Graph" width="60px" height="40px" />
+							<figcaption>African-Americans</figcaption>
+						</figure>
+						<figure id="q10" class="unselected">
+							<img src="../img/thumbnails/12_democrats.png" alt="Small Graph" width="60px" height="40px" />
+							<figcaption>Democrats</figcaption>
+						</figure>
+						<figure id="q11" class="unselected">
+							<img src="../img/thumbnails/13_republicans.png" alt="Small Graph" width="60px" height="40px" />
+							<figcaption>Republicans</figcaption>
+						</figure>
+							
+						<figure id="q13" class="unselected">
+							<img src="../img/thumbnails/14_obama.png" alt="Small Graph" width="60px" height="40px" />
+							<figcaption>Barack Obama</figcaption>
+						</figure>
+	
+					</div>
+				</div>
+			</div>
+			<footer>
+				<ol>
+					<li><a class="nostyle" href="../index.html">Home</a></li>
+					<li><a class="nostyle" href="../quiz/index.html">Take The Quiz</a></li>
+					<li><a class="nostyle" href="../technicalnotes.pdf">Technical Notes</a></li>
+					<li><a class="nostyle" href="mailto:contact@mixedfeelings.us">Contact</a></li>
+				</ol>
+			</footer>
+	</div>
+
+  <!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="../js/jquery-1.7.2.min.js"><\/script>')</script>
+  
+  <script src="../js/d3.v2.min.js"></script>
+  
+  <!-- scripts concatenated and minified via build script -->
+  <script src="../js/plugins.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  
+  <!-- end scripts -->
+  
+</body>
+</html>

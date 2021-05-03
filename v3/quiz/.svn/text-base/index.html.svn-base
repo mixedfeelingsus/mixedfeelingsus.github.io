@@ -1,0 +1,139 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+<style type="text/css">
+	#button { 
+		position:absolute;
+		top:105px;
+	}
+</style>
+
+<script type="text/javascript">
+
+
+//generate the sliders
+$(document).ready(function() {
+	for (var k = 0; k < 10; k++) {
+		$("#slider"+k).slider();
+		$("#slider"+k).slider( "option", "min", 0 );
+		$("#slider"+k).slider( "option", "max", 300 );	
+	}
+});
+
+
+//record values and show/hide questions as we go
+var cookieValues = new Array(10);
+var i = 0;
+var j = 0;
+function recordValue() {
+	var value = $( "#slider"+i ).slider( "option", "value" );
+	cookieValues[i] = value;
+	
+	if (i == cookieValues.length - 1) { setCookie(); return; }
+	
+	if (i%2 == 0) {
+		$("#div"+i).fadeOut(500);
+		$("#div"+(i+1)).delay(500).fadeIn(500);
+		i++;
+	}
+	else {
+		$("#bigdiv"+j).fadeOut(500);
+		$("#bigdiv"+(j+1)).delay(500).fadeIn(500);
+		i++;
+		j++;
+	}	
+}
+
+
+//set cookie based on responses and advance to visualization
+function setCookie () {
+	var cookieString = "mixedFeelingsCookie="+cookieValues.toString()+"; expires=";
+	var expDate = new Date();
+	expDate.setDate(expDate.getDate() + 30);
+	cookieString += expDate.toUTCString()+"; path=/";
+	document.cookie = cookieString;
+	window.location = "../viz/index.html";
+}
+
+
+//cookie info: http://www.quirksmode.org/js/cookies.html
+//js forms info: http://www.quirksmode.org/js/forms.html
+
+</script>
+</head>
+
+<body>
+	
+<form action="javascript: recordValue();">
+	
+	<div id="bigdiv0">
+		<p>Overall, how do you feel about Facebook?</p>
+		<div id="div0">
+				<p><em>Thinking only of the <strong><u>positive</u></strong> aspects of Facebook, I feel:</em></p>
+				<div id="slider0"></div>
+		</div>
+		<div id="div1" style="display: none">
+				<p><em>Thinking only of the <strong><u>negative</u></strong> aspects of Facebook, I feel:</em></p>
+				<div id="slider1"></div>
+		</div>
+	</div>
+
+	<div id="bigdiv1" style="display: none">
+		<p>Overall, how do you feel about your diet and exercise habits?</p>
+		<div id="div2">
+				<p><em>Thinking only of the <strong><u>positive</u></strong> aspects of my diet and exercise habits, I feel:</em></p>
+				<div id="slider2"></div>
+		</div>
+		<div id="div3" style="display: none">
+				<p><em>Thinking only of the <strong><u>negative</u></strong> aspects of my diet and exercise habits, I feel:</em></p>
+				<div id="slider3"></div>
+		</div>
+	</div>
+		
+	<div id="bigdiv2" style="display: none">
+		<p>Overall, how do you feel about Mitt Romney?</p>
+		<div id="div4">
+				<p><em>Thinking only of the <strong><u>positive</u></strong> aspects of Mitt Romney, I feel:</em></p>
+				<div id="slider4"></div>
+		</div>
+	
+		<div id="div5" style="display: none">
+				<p><em>Thinking only of the <strong><u>negative</u></strong> aspects of Mitt Romney, I feel:</em></p>
+				<div id="slider5"></div>
+		</div>
+	</div>
+	
+	<div id="bigdiv3" style="display: none">
+		<p>Overall, how do you feel about donating your internal organs when you die?</p>
+		<div id="div6">
+				<p><em>Thinking only of the <strong><u>positive</u></strong> aspects of donating my internal organs when I die, I feel:</em></p>
+				<div id="slider6"></div>
+		</div>
+	
+		<div id="div7" style="display: none">
+				<p><em>Thinking only of the <strong><u>negative</u></strong> aspects of donating my internal organs when I die, I feel:</em></p>
+				<div id="slider7"></div>
+		</div>
+	</div>
+	
+	<div id="bigdiv4" style="display: none">
+		<p>Overall, how do you feel about giving money to a homeless person on the street, such as on Telegraph Avenue?</p>
+		<div id="div8">
+				<p><em>Thinking only of the <strong><u>positive</u></strong> aspects of giving money to a homeless person on the street, such as on Telegraph Avenue, I feel:</em></p>
+				<div id="slider8"></div>
+		</div>
+	
+		<div id="div9" style="display: none">
+				<p><em>Thinking only of the <strong><u>negative</u></strong> aspects of giving money to a homeless person on the street, such as on Telegraph Avenue, I feel:</em></p>
+				<div id="slider9"></div>
+		</div>
+	</div>
+	
+<input type="submit" value="&gt;&gt;" id="button"/>
+</form>
+	
+</body>

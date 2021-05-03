@@ -1,0 +1,310 @@
+<!doctype html> <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+
+		<title>Mixed Feelings Summary</title>
+		<meta name="description" content="" />
+
+		<meta name="viewport" content="width=device-width" />
+
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css"/>
+		<link rel="stylesheet" href="./css/960_12_col.css" />
+		<link rel="stylesheet" href="./css/common.css" />
+		<link rel="stylesheet" href="./css/style.css" />
+
+		<link rel="shortcut icon" href="favicon.ico" />
+
+  <style type="text/css">
+  		rect {
+  			shape-rendering: crispEdges;
+  		}
+       .rule line {
+         stroke: #ccc;
+       }
+       td {
+         padding: 10px; 
+       }
+  </style>
+		
+  <script type="text/javascript" src="./js/d3.v2.js"></script>
+
+	</head>
+
+	<body>
+	<center>
+		<div id="backgroundContainer">
+			<div id="intro" class="container_12">
+				<h1>Mixed Feelings Summary</h1>
+				<div id="content" class="grid_12">
+			
+						<div id="summary">
+						
+							<script src="./js/data.js"></script>
+							<script type="text/javascript">									
+								var samp_size = 0;
+								sampsize = question_array.length;
+								
+								var val_array = new Array();
+								
+								for(var i = 0; i < sampsize; i++) {
+									val_array[i] = { questions: question_array[i], neg_score: neg_array[i], pos_score: pos_array[i], amb_score: amb_array[i] };
+										console.log(val_array[i]);
+									}
+	
+							var w = 620,
+								h = 500,
+
+								labelpad = 195,
+								titlepad = 100,
+								leftpad = 60,
+								footnote = 15,
+								p = 10,
+								x = d3.scale.linear().domain([-300,300]).range([leftpad, w - labelpad]),
+								y = d3.scale.linear().domain([0,question_array.length]).range([0, h - titlepad - footnote])
+								z = d3.scale.linear().domain([0,question_array.length]).range([0, 70]);
+
+							var padding = 40;
+
+							var xScale = d3.scale.linear()
+										.domain([0, 600])
+										.rangeRound([padding, w - padding]);
+
+							var yScale = d3.scale.linear()
+										.domain([0, 1])
+										.rangeRound([h - padding, padding]);
+										
+							var colors = ["#0071BC", "#9E005D", "2E3192"] ;
+
+							var vis = d3.select("#summary")
+							   .append("svg:svg")
+								 .attr("class", "chart")
+								 .attr("width", w + 2*p)
+								 .attr("height", h + 2*p);
+
+							var bars = vis.selectAll("svg")
+								 .data(val_array)
+							   .enter().append("svg:rect")
+/*								.attr("x1", xScale(0))
+								.attr("y1", yScale(0))
+								.attr("x2", xScale(0))
+								.attr("y2", yScale(0));
+*/								.attr("fill", "white") 
+								 .attr("stroke", "black") 
+								 .attr("x", labelpad)
+								 .attr("y", function(d,i){ return titlepad + y(i); })
+								 .attr("width",  w - labelpad - leftpad)
+								 .attr("height", 4);
+
+							var SumCircle = vis.selectAll("circle")
+								 .data(posNeg_array)
+							   .enter().append("svg:circle")
+								 .attr("fill", colors[2]) 
+								 .attr("cx", function(d){ return labelpad + x(d) - leftpad; }) //150 + labelpad)
+								 .attr("cy", function(d,i){ return titlepad + y(i) + 2; })
+								.attr("opacity", .8)								 
+								 .attr("r", 10)
+								.on("mouseover", mouseover);								 
+//								.on("mouseout", mouseout);
+								
+							var sumRules = vis.selectAll("g.rule")
+								.data(posNeg_array)	
+							  .enter().append("svg:g")
+								.attr("class", "rule");
+
+							sumRules.append("svg:text")
+							   .attr("x", 0)
+							   .attr("y", function(d,i){ return 6 + titlepad + y(i); })
+							   .text(function(d,i){ return question_array[i]; });
+
+							sumRules.append("svg:text")
+							   .attr("x", w + p - leftpad)
+							   .attr("y", function(d,i){ return 6 + titlepad + y(i); })
+							   .text(function(d,i){ return amb_array[i]; });
+
+							sumRules.append("svg:circle")
+							   .attr("fill", colors[2]) 
+							   .attr("cx", p)
+							   .attr("cy", 15 + 3*p)
+								.attr("opacity", .8)
+							   .attr("r", 10);
+							   
+							sumRules.append("svg:text")
+							   .attr("x", 2*p)
+							   .attr("y", 10 + 4*p)
+								.attr("opacity", .8)							   
+							   .text("Sum of Positive and Negative");
+							   
+//opacity = 0
+							var posCircle = vis.selectAll("circle.pos")
+								 .data(val_array)
+							   .enter().append("svg:circle")
+								 .attr("fill", colors[1]) 
+								 .attr("cx", function(d){ return labelpad + x(d.neg_score) - leftpad; }) //150 + labelpad)
+								 .attr("cy", function(d,i){ return titlepad + y(i) + 2; })
+								 .attr("opacity", 0.8)
+								 .attr("r", 10);
+
+							var negCircle = vis.selectAll("circle.neg")
+								 .data(val_array)
+							   .enter().append("svg:circle")
+								 .attr("fill", colors[0]) 
+								 .attr("cx", function(d){ return labelpad + x(d.pos_score)- leftpad; }) //150 + labelpad)
+								 .attr("cy", function(d,i){ return titlepad + y(i) + 2; })
+								 .attr("opacity", 0.8)
+								 .attr("r", 10);
+
+							 var posNegRules = vis.selectAll("g.rule")
+								.data(val_array)	
+							  .enter().append("svg:g")
+								.attr("class", "rule");
+
+							posNegRules.append("svg:circle")
+							   .attr("fill", colors[0]) 
+							   .attr("cx", p)
+							   .attr("cy", 15 + 3*p)
+								.attr("opacity", .8)
+							   .attr("r", 10);
+							   
+							posNegRules.append("svg:text")
+							   .attr("x", 2*p)
+							   .attr("y", 10 + 4*p)
+								.attr("opacity", .8)							   
+							   .text("Positive");
+
+							posNegRules.append("svg:circle")
+							   .attr("fill", colors[1]) 
+							   .attr("cx", 14*p)
+							   .attr("cy", 15 + 3*p)
+								.attr("opacity", .8)
+							   .attr("r", 10);
+							   
+							posNegRules.append("svg:text")
+							   .attr("x", 15*p)
+							   .attr("y", 10 + 4*p)
+								.attr("opacity", .8)							   
+							   .text("Negative");
+								 
+//opacity = 0
+							   var dotsExpanded = false;
+								var svg = d3.select("#viz")
+									.append("svg")
+									.attr("width", w)
+									.attr("height", h);
+
+						var longAnimation = 800;							   
+						var shortAnimation = 300;
+
+
+						//on mouseover, get the current dot, check to see if it's visible, add text label and increase opacity to 1 to emphasize
+						function mouseover(d, i){
+							curDot = d3.select(this)
+							
+							console.log(d);
+							
+							//explode dot
+							if(!dotsExpanded)
+							{
+															
+								posNegDot = svg.append("circle")
+									.attr("class", "expanded")
+									.attr("cx", function(){ return  labelpad + x(posNeg_array[i]); })
+//									.attr("cy", function(){ return titlepad + y(posNeg_array[i]) + 2; });
+									
+							var negDot = vis.append("svg:circle")							 
+								 .attr("cx", function(){ return labelpad + x(neg_array[i]) - leftpad; }) //150 + labelpad)
+								 .attr("cy", function(d,i){ return titlepad + y(i) + 2; })
+								 .attr("r", 10);
+
+							var posDot = vis.append("svg:circle")							 
+								 .attr("cx", function(){ return labelpad + x(pos_array[i]) - leftpad; }) //150 + labelpad)
+								 .attr("cy", function(d,i){ return titlepad + y(i) + 2; })
+								 .attr("r", 10);								 
+/*								var posCircle = vis.selectAll("circle.pos")
+									 .data(val_array)
+									 .enter().append("svg:circle")
+									.transition()
+									.duration(longAnimation * 2)
+									.ease("elastic", 1 + (posNeg_array[i]), .6)								 
+									 .attr("fill", colors[0]) 
+									 .attr("opacity", .8)								 
+									 .attr("cx", function(d){ return labelpad + x(d.pos_score); }) //150 + labelpad)
+									 .attr("cy", function(d,i){ return titlepad + y(i) + 2; })
+									 .attr("r", 10);							
+*/								 
+/*								posNegDot
+									.transition()
+									.duration(longAnimation * 2)
+									.ease("elastic", 1 + (posNeg_array[i]), .6)
+									.attr("cx", function(){ return  labelpad + x(posNeg_array[i]); })
+//									.attr("cy", function(){ return titlepad + y(i) + 2; })
+									.attr("fill", colors[3])
+									.attr("r", 10)
+									.attr("opacity", 0.8);
+									
+/*								negDot
+									.transition()
+									.duration(longAnimation * 2)
+//									.ease("elastic", 1 + (posNegData[curQuestion][i + 30][1]/2), .45)
+									.attr("cx", function(d){ return labelpad + x(d.neg_score) - leftpad; })
+									.attr("cy", function(d,i){ return titlepad + y(i) + 2; })
+									.attr("fill", colors[1])
+									.attr("r", 10)
+									.attr("opacity", 1);
+									
+/*								curDot.transition()
+									.duration(shortAnimation)	
+									.attr("r", 10)
+									.attr("fill", "#ccc");
+*/									
+
+							}
+							
+							
+							curDot.attr("opacity", 1);
+								
+							var label = svg.append("text")
+									.text(function() { return d[0] + " , " + d[1]})
+									.attr("x", function() { return xScale(d[0]); })
+									.attr("y", function() { return yScale(d[1]) + 20; })
+									.attr("class", "label")
+									.attr("text-anchor", "middle")
+									.attr("opacity", 0.8);
+							
+/*							if(!dotsExpanded)
+							{
+								var posLabel = svg.append("text")
+									.text(posNegData[curQuestion][i][0] +  " , " + posNegData[curQuestion][i][1])
+									.attr("x", function() { return xScale(posNegData[curQuestion][i][0]) + 15; })
+									.attr("y", function() { return yScale(posNegData[curQuestion][i][1]); })
+									.attr("class", "label")
+									.attr("opacity", 0.0001);
+									
+								var negLabel = svg.append("text")
+									.text(posNegData[curQuestion][i + 30][0] +  " , " + posNegData[curQuestion][i + 30][1])
+									.attr("x", function() { return xScale(posNegData[curQuestion][i + 30][0]) - 80; })
+									.attr("y", function() { return yScale(posNegData[curQuestion][i + 30][1]); })
+									.attr("class", "label")
+									.attr("opacity", 0.0001);
+							}
+										
+							svg.selectAll("text.label")
+								.transition()
+								.duration(shortAnimation)
+								.attr("opacity", 1);
+							
+						*/	
+						}
+						
+							</script>
+						</div>															
+				</div>
+			</div>
+		</div>
+	</center>
+		
+	</body>
+</html>
